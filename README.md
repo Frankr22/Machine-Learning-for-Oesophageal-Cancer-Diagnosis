@@ -1,4 +1,7 @@
 # Machine Learning Esophageal Cancer Diagnosis
+
+![DALL·E 2023-03-01 14 47 40 - Can machine learning be used to diagnose cancer_](https://user-images.githubusercontent.com/110333750/222064989-03d22a6e-e69f-4e54-9aa4-ad27341edb0d.png)
+
 This project aims to investigate the potential of machine learning algorithms in diagnosing esophageal cancer using biochemical data. The project focuses on using raw data output from biochemical labs to predict the presence of esophageal cancer in patients.
 
 ## Background
