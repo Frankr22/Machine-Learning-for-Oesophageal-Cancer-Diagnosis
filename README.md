@@ -13,5 +13,8 @@ The project uses several machine learning algorithms to predict the presence of 
 ## Usage
 To use this project, you will need to have Python and several Python packages installed, including Scikit-learn, NumPy, and Pandas. You can clone the repository and run the scripts provided to preprocess the data, train and evaluate the machine learning algorithms, and make predictions on new data. You can also explore the Jupyter notebooks provided to visualize the data and results.
 
+## Project Structure
+Data/ directory contains the dataset
+
 ## Contributors
 This project was developed by Robert Franklin (GitHub username: Frankr22), Marisa Duong (GitHub username: MarDuo2022), Brianna O'Connor (GitHub username: borruu) as part of their capstone project for their data analytics course. They welcome contributions from other data scientists, machine learning enthusiasts, and medical professionals who are interested in improving the diagnosis of esophageal cancer.
