@@ -19,5 +19,11 @@ To use this project, you will need to have Python and several Python packages in
 ## Project Structure
 Data/ directory contains the dataset
 
+## References
+Scikit-learn documentation: https://scikit-learn.org/stable/documentation.html
+Bootstrap documentation: https://getbootstrap.com/docs/5.1/getting-started/introduction/
+Plotly documentation: https://plotly.com/javascript/
+Leaflet documentation: https://leafletjs.com/
+
 ## Contributors
 This project was developed by Robert Franklin (GitHub username: Frankr22), Marisa Duong (GitHub username: MarDuo2022), Brianna O'Connor (GitHub username: borruu) as part of their capstone project for their data analytics course. They welcome contributions from other data scientists, machine learning enthusiasts, and medical professionals who are interested in improving the diagnosis of esophageal cancer.
