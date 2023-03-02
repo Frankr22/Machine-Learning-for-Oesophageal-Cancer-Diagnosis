@@ -18,6 +18,7 @@ To use this project, you will need to have Python and several Python packages in
 
 ## Project Structure
 Data/ directory contains the dataset
+- `image/` directory contains images used in the project such as visualisations.
 
 ## References
 Scikit-learn documentation: https://scikit-learn.org/stable/documentation.html
