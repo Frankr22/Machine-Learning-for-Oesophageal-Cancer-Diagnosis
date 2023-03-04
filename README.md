@@ -24,6 +24,17 @@ To use this project, you will need to have Python and several Python packages in
 Data/ directory contains the dataset
 - `Images/` directory contains images used in the project such as visualisations.
 
+## Technologies Used
+We utilized the following technologies in our project:
+
+- Scikit-learn for machine learning
+- Python Pandas for data manipulation
+- X for data visualization
+- HTML/CSS/Bootstrap for frontend web development
+- JavaScript Plotly for interactive data visualization
+- SQL Database for data storage and retrieval
+- Amazon Web Services for cloud-based SQL hosting
+
 ## References
 - Scikit-learn documentation: https://scikit-learn.org/stable/documentation.html
 - Bootstrap documentation: https://getbootstrap.com/docs/5.1/getting-started/introduction/
