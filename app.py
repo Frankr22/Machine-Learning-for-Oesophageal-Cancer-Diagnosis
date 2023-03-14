@@ -16,7 +16,8 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
 # Load data
-joined_df = pd.read_csv('../Data_Cleaned/Joined_df_cleaned.csv')
+joined_df = pd.read_csv('Data_Cleaned/Joined_df_cleaned.csv')
+
 # Drop the Unnamed: 0 column from joined_df using iloc
 joined_df = joined_df.iloc[:, 1:]
 # Create a StandardScaler object
