@@ -14,6 +14,15 @@ import warnings
 import streamlit as st
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+# Create a SparkSession
+spark = SparkSession.builder.appName("myApp").getOrCreate()
+
+# # Load data from S3 into a Spark DataFrame (data needs to be scaled and cleaned already)
+# s3_file_path = "s3a://my-bucket/Joined_df_cleaned.csv"
+# df = spark.read.format("csv").option("header", True).load(s3_file_path)
 
 # Load data
 joined_df = pd.read_csv('Data_Cleaned/Joined_df_cleaned.csv')
@@ -33,6 +42,11 @@ scaled_df['target'] = joined_df['Patient Group'].map({'BE-HGD': 0, 'EAC': 1, 'BE
 # Drop the Group column as it is no longer needed
 scaled_df.drop('Patient Group', axis=1, inplace=True)
 
+## USE .h5 Model Instead
+
+# Convert Spark DataFrame to Pandas DataFrame
+pdf = df.toPandas()
+
 # Split the dataset into training and testing sets
 X = scaled_df.drop(columns=['target'])
 y = scaled_df['target']
@@ -43,30 +57,49 @@ best_params = {'C': 0.1, 'max_iter': 100, 'penalty': 'l1', 'solver': 'liblinear'
 
 # Create a Logistic Regression model with the best hyperparameters
 model = LogisticRegression(**best_params)
-
 # Train the model on the training data
 model.fit(X_train, y_train)
+
+# Define a function to make predictions using the model
+def predict(model, data):
+    return model.predict(data)
 
 # Define Streamlit app
 def app():
     # Set app title
-    st.title('My Streamlit App')
-    
-    # Add sliders and inputs for user interaction
-    age = st.slider('Age', 18, 100)
-    bmi = st.slider('BMI', 10, 50)
-    gender = st.selectbox('Gender', ['Male', 'Female'])
-    
-    # Make prediction with model
-    if st.button('Predict'):
-        gender_binary = 1 if gender == 'Male' else 0
-        prediction = model.predict([[age, bmi, gender_binary]])[0]
+    st.title('My App')
+
+    # Add some text
+    st.write("This is my app.")
+
+    # Add a sidebar with some options
+    sidebar_options = ["View data", "Make a prediction using only Clinical Data", "Make a prediction using only Clinical Data and Provided Lab Data"]
+    sidebar_selection = st.sidebar.selectbox("Select an option", sidebar_options)
+
+    # Display the data or make a prediction based on the user's selection
+    if sidebar_selection == "View data":
+        st.write(pdf.head())
+    elif sidebar_selection == "Make a prediction":
+        # Get some user input
+        age = st.number_input("Enter your age", value=30, min_value=18, max_value=100)
+        sex = st.selectbox("Select your sex", ["male", "female"])
+        bmi = st.number_input("Enter your BMI", value=25, min_value=0, max_value=50)
         
-        # Display prediction
-        if prediction == 0:
-            st.write('Prediction: No disease')
+        # Create a DataFrame with the user input
+        user_input = pd.DataFrame({
+            "age": [age],
+            "sex": [sex],
+            "bmi": [bmi]
+        })
+        
+        # Make a prediction using the model
+        prediction = predict(model, user_input)
+        
+        # Display the prediction
+        if prediction[0] == 1:
+            st.write("You have a high risk of developing a disease.")
         else:
-            st.write('Prediction: Disease')
+            st.write("You have a low risk of developing a disease.")
     
 # Run the Streamlit app
 if __name__ == '__main__':
