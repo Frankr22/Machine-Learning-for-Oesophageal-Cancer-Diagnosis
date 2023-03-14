@@ -1,21 +1,17 @@
 # Dependencies & Installs
-# import pandas as pd
-# import numpy as np
-# import warnings
+import pandas as pd
 import streamlit as st
-# import pandas as pd
-# from pyspark.sql import SparkSession
-# from pyspark.sql.functions import col
+from pyspark.sql import SparkSession
 
-# # Create a SparkSession
-# spark = SparkSession.builder.appName("myApp").getOrCreate()
+# Create a SparkSession
+spark = SparkSession.builder.appName("myApp").getOrCreate()
 
-# # # Load data from S3 into a Spark DataFrame (data needs to be scaled and cleaned already)
-# # s3_file_path = "s3a://my-bucket/Joined_df_cleaned.csv"
-# # df = spark.read.format("csv").option("header", True).load(s3_file_path)
+# Load data from S3 into a Spark DataFrame (data needs to be scaled and cleaned already)
+s3_file_path = "s3a://my-bucket/Joined_df_cleaned.csv"
+df = spark.read.format("csv").option("header", True).load(s3_file_path)
 
-# # Convert Spark DataFrame to Pandas DataFrame
-# pdf = df.toPandas()
+# Convert Spark DataFrame to Pandas DataFrame
+pdf = df.toPandas()
 
 ## USE .h5 Model Instead
 # # Split the dataset into training and testing sets
@@ -38,7 +34,8 @@ def app():
     st.title('My App')
 
     # Add some text
-    st.write("This is my app.")
+    st.write("Welcome to the Diagnosis of Esophageal Cancer app.")
+    st.image("Images/ai-generated-image-dalle.jpg", use_column_width=True)
 
     # Add a sidebar with some options
     sidebar_options = ["View data", "Make a prediction using only Clinical Data", "Make a prediction using only Clinical Data and Provided Lab Data"]
@@ -65,9 +62,9 @@ def app():
         
         # Display the prediction
         if prediction[0] == 1:
-            st.write("You have a high risk of developing a disease.")
+            st.write("You have a high risk of developing esophageal cancer.")
         else:
-            st.write("You have a low risk of developing a disease.")
+            st.write("You have a low risk of developing esophageal cancer.")
     
 # Run the Streamlit app
 if __name__ == '__main__':
