@@ -11,9 +11,9 @@ local_file_path = "Data_Cleaned/User_Samples/users.csv"
 df = pd.read_csv(local_file_path)
 df.head()
 
-# Load the trained model
-with open('Models/Model_Saved/model_rf_LogisticRegression.pkl', 'rb') as f:
-    model_rf = pickle.load(f)
+# # Load the trained model
+# with open('Models/Model_Saved/model_rf_LogisticRegression.pkl', 'rb') as f:
+#     model_rf = pickle.load(f)
     
     # Define Streamlit app
 def app():
@@ -56,14 +56,14 @@ def app():
         blood_results_df = sample_row.drop(columns=["Patient Group", "Age at Collection", "BMI (kg/m2)", "Gender_F", "Gender_M"])
         user_input = pd.concat([user_input, blood_results_df.reset_index(drop=True)], axis=1)
 
-        # Make a prediction using the model
-        prediction = model_rf.predict(user_input)
+#         # Make a prediction using the model
+#         prediction = model_rf.predict(user_input)
 
-        # Display the prediction
-        if prediction[0] == 1:
-            st.write("You have a high risk of developing esophageal cancer.")
-        else:
-            st.write("You have a low risk of developing esophageal cancer.")
+#         # Display the prediction
+#         if prediction[0] == 1:
+#             st.write("You have a high risk of developing esophageal cancer.")
+#         else:
+#             st.write("You have a low risk of developing esophageal cancer.")
     else:
         st.write("Click the button to generate blood test results and make a prediction.")
 
