@@ -1,28 +1,18 @@
 # Dependencies & Installs
 import pandas as pd
 import streamlit as st
-import pickle
 from joblib import load
-
-# Load data from S3 into a Pandas DataFrame (data needs to be scaled and cleaned already)
-# s3_file_path = "s3://esophageal-cancer-biochem-data/Joined_df_cleaned.csv"
-# df = pd.read_csv(s3_file_path)
 
 local_file_path = "Data_Cleaned/User_Samples/users.csv"
 df = pd.read_csv(local_file_path)
 df.head()
-
-# Load the trained model
-<<<<<<< HEAD
-model = load('Models/Model_Saved/model6_LogisticRegression.joblib')
-=======
-with open('Models/Model_Saved/model6_LogisticRegression.pkl', 'rb') as f:
-    model = load('Models/Model_Saved/model6_LogisticRegression.joblib')
->>>>>>> bf90f56a90ea51dac33410c77d3c5d417c87d646
     
-    # Define Streamlit app
+# Define Streamlit app
 def app():
     
+    # Load the trained model
+    model6 = load('Models/Model_Saved/model6_LogisticRegression.joblib')
+
     # Set app title
     st.title('Esophageal Cancer Risk Assessment app')
 
@@ -35,6 +25,9 @@ def app():
     sex = st.selectbox("Select your sex", ["male", "female"])
     bmi = st.number_input("Enter your BMI", value=25, min_value=0, max_value=50)
     diagnosed = st.selectbox("Have you been diagnosed?", ["No", "Barrett esophagus - no dysplasia", "Barrett esophagus - low dysplasia", "Barrett esophagus - high dysplasia", "Esophageal cancer"])
+
+    if diagnosed == "No":
+        model = model6
 
     gender_f = 1 if sex == "female" else 0
     gender_m = 1 if sex == "male" else 0
