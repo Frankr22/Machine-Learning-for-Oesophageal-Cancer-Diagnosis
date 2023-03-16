@@ -1,32 +1,14 @@
 # Dependencies & Installs
 import pandas as pd
 import streamlit as st
-from pyspark.sql import SparkSession
+import pickle
 
-# Create a SparkSession
-spark = SparkSession.builder.appName("myApp").getOrCreate()
+# Load data from S3 into a Pandas DataFrame (data needs to be scaled and cleaned already)
+s3_file_path = "s3://esophageal-cancer-biochem-data/Joined_df_cleaned.csv"
+df = pd.read_csv(s3_file_path)
 
-# Load data from S3 into a Spark DataFrame (data needs to be scaled and cleaned already)
-s3_file_path = "s3a://my-bucket/Joined_df_cleaned.csv"
-df = spark.read.format("csv").option("header", True).load(s3_file_path)
-
-# Convert Spark DataFrame to Pandas DataFrame
-pdf = df.toPandas()
-
-## USE .h5 Model Instead
-# # Split the dataset into training and testing sets
-# X = scaled_df.drop(columns=['target'])
-# y = scaled_df['target']
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-# # Define the best hyperparameters
-# best_params = {'C': 0.1, 'max_iter': 100, 'penalty': 'l1', 'solver': 'liblinear'}
-# # Create a Logistic Regression model with the best hyperparameters
-# model = LogisticRegression(**best_params)
-# # Train the model on the training data
-# model.fit(X_train, y_train)
-# # Define a function to make predictions using the model
-# def predict(model, data):
-#     return model.predict(data)
+# Use .pkl file to load the model
+model_rf = pickle.load(open('Models/Model_Saved/model_rf_LogisticRegression.pkl', 'rb'))
 
 # Define Streamlit app
 def app():
@@ -35,7 +17,7 @@ def app():
 
     # Add some text
     st.write("Welcome to the Diagnosis of Esophageal Cancer app.")
-    st.image("Images/ai-generated-image-dalle.jpg", use_column_width=True)
+    st.image("ai-generated-image-dalle.jpg", use_column_width=True)
 
     # Add a sidebar with some options
     sidebar_options = ["View data", "Make a prediction using only Clinical Data", "Make a prediction using only Clinical Data and Provided Lab Data"]
@@ -43,8 +25,8 @@ def app():
 
     # Display the data or make a prediction based on the user's selection
     if sidebar_selection == "View data":
-        st.write(pdf.head())
-    elif sidebar_selection == "Make a prediction":
+        st.write(df.head())
+    elif sidebar_selection == "Make a prediction using only Clinical Data" or sidebar_selection == "Make a prediction using only Clinical Data and Provided Lab Data":
         # Get some user input
         age = st.number_input("Enter your age", value=30, min_value=18, max_value=100)
         sex = st.selectbox("Select your sex", ["male", "female"])
@@ -58,7 +40,7 @@ def app():
         })
         
         # Make a prediction using the model
-        prediction = predict(model, user_input)
+        prediction = model_rf.predict(user_input)
         
         # Display the prediction
         if prediction[0] == 1:
