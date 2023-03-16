@@ -2,6 +2,7 @@
 import pandas as pd
 import streamlit as st
 import pickle
+from joblib import load
 
 # Load data from S3 into a Pandas DataFrame (data needs to be scaled and cleaned already)
 # s3_file_path = "s3://esophageal-cancer-biochem-data/Joined_df_cleaned.csv"
@@ -13,7 +14,7 @@ df.head()
 
 # Load the trained model
 with open('Models/Model_Saved/model6_LogisticRegression.pkl', 'rb') as f:
-    model = pickle.load(f)
+    model = load('Models/Model_Saved/model6_LogisticRegression.joblib')
     
     # Define Streamlit app
 def app():
