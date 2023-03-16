@@ -1,0 +1,11 @@
+Patient Group,Age at Collection,BMI (kg/m2),Gender_F,Gender_M
+BE-LGD,55.0,27.7,0,1
+EAC,65.0,32.6,0,1
+BE-LGD,55.0,30.2,1,0
+NSE,54.0,30.04,1,0
+BE-HGD,63.0,33.5,0,1
+BE-HGD,71.0,25.8,0,1
+EAC,53.0,22.7,0,1
+NSE,57.0,29.8,0,1
+EAC,55.0,41.0,1,0
+EAC,65.0,27.8,0,1
