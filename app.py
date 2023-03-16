@@ -13,7 +13,12 @@ df = pd.read_csv(local_file_path)
 df.head()
 
 # Load the trained model
+<<<<<<< HEAD
 model = load('Models/Model_Saved/model6_LogisticRegression.joblib')
+=======
+with open('Models/Model_Saved/model6_LogisticRegression.pkl', 'rb') as f:
+    model = load('Models/Model_Saved/model6_LogisticRegression.joblib')
+>>>>>>> bf90f56a90ea51dac33410c77d3c5d417c87d646
     
     # Define Streamlit app
 def app():
