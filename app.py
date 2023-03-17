@@ -15,19 +15,19 @@ def app():
     model6_X_scaler = load('Models/Model_Saved/model6_X_scaler.joblib')
 
     # Set app title
-    st.title('Esophageal Cancer Risk Assessment app')
+    st.title('Oesophageal Cancer Risk Assessment app')
 
     # Create two columns for the layout
     left_column, right_column = st.columns(2)
 
-    left_column.write("Welcome to our Esophageal Cancer Risk Assessment app!")
-    left_column.write("\nThis app utilizes advanced machine learning algorithms to estimate your risk of developing esophageal cancer based on pre-screening and blood sample data.")
-    left_column.write("\nGet started by inputting your data to assess your esophageal cancer risk.")
+    left_column.write("Welcome to our Oesophageal Cancer Risk Assessment app!")
+    left_column.write("\nThis app utilizes advanced machine learning algorithms to estimate your risk of developing oesophageal cancer based on pre-screening and blood sample data.")
+    left_column.write("\nGet started by inputting your data to assess your oesophageal cancer risk.")
     left_column.image("Images/ai-generated-image-dalle.png", width=300)
 
     # Add the rest of the text below the risk assessment in a separate row
     additional_text = """
-    Esophageal cancer is a life-threatening disease affecting millions of people worldwide, and early diagnosis is crucial for improving survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. Our app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying esophageal conditions, our models have been trained and evaluated to deliver accurate predictions.
+    Oesophageal cancer is a life-threatening disease affecting millions of people worldwide, and early diagnosis is crucial for improving survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. Our app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, our models have been trained and evaluated to deliver accurate predictions.
     """
 
     # Get user input
@@ -70,9 +70,9 @@ def app():
 
         # Display the prediction
         if prediction[0] == 1:
-            right_column.write(f"Based on the information you provided and our machine learning model's understanding of the relationship between various factors and esophageal cancer risk, it is estimated that you have a higher risk of developing esophageal cancer. The model predicts a {prediction_proba[0][1]*100:.2f}% probability of you being in the higher-risk group.\n\nPlease note that this tool is not a substitute for professional medical advice, diagnosis, or treatment. The results should be considered as an estimate and should not be relied upon for decision-making regarding your health. Always consult with a healthcare professional for personalised medical advice.")
+            right_column.write(f"Based on the information you provided and our machine learning model's understanding of the relationship between various factors and oesophageal cancer risk, it is estimated that you have a higher risk of developing oesophageal cancer. The model predicts a {prediction_proba[0][1]*100:.2f}% probability of you being in the higher-risk group.\n\nPlease note that this tool is not a substitute for professional medical advice, diagnosis, or treatment. The results should be considered as an estimate and should not be relied upon for decision-making regarding your health. Always consult with a healthcare professional for personalised medical advice.")
         else:
-            right_column.write(f"Based on the information you provided and our machine learning model's understanding of the relationship between various factors and esophageal cancer risk, it is estimated that you have a lower risk of developing esophageal cancer. The model predicts a {prediction_proba[0][0]*100:.2f}% probability of you being in the lower-risk group.\n\nPlease note that this tool is not a substitute for professional medical advice, diagnosis, or treatment. The results should be considered as an estimate and should not be relied upon for decision-making regarding your health. Always consult with a healthcare professional for personalised medical advice.")
+            right_column.write(f"Based on the information you provided and our machine learning model's understanding of the relationship between various factors and oesophageal cancer risk, it is estimated that you have a lower risk of developing oesophageal cancer. The model predicts a {prediction_proba[0][0]*100:.2f}% probability of you being in the lower-risk group.\n\nPlease note that this tool is not a substitute for professional medical advice, diagnosis, or treatment. The results should be considered as an estimate and should not be relied upon for decision-making regarding your health. Always consult with a healthcare professional for personalised medical advice.")
     else:
         right_column.write("Click the button to generate risk assessment.")
 
