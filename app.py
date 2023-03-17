@@ -24,7 +24,7 @@ def app():
     age = st.number_input("Enter your age", value=30, min_value=18, max_value=100)
     sex = st.selectbox("Select your sex", ["male", "female"])
     bmi = st.number_input("Enter your BMI", value=25, min_value=0, max_value=50)
-    diagnosed = st.selectbox("Have you been diagnosed?", ["No", "Barrett esophagus - no dysplasia", "Barrett esophagus - low dysplasia", "Barrett esophagus - high dysplasia", "Esophageal cancer"])
+    diagnosed = st.selectbox("Have you been diagnosed with Barret esophagus?", ["No", "Barrett esophagus - no dysplasia", "Barrett esophagus - low dysplasia", "Barrett esophagus - high dysplasia"])
 
     if diagnosed == "No":
         model = model6
@@ -32,17 +32,15 @@ def app():
     gender_f = 1 if sex == "female" else 0
     gender_m = 1 if sex == "male" else 0
 
-    patient_group = ""
-    if diagnosed == "No":
-        patient_group = "NSE"
-    elif diagnosed == "Barrett esophagus - no dysplasia":
-        patient_group = "BE"
-    elif diagnosed == "Barrett esophagus - low dysplasia":
-        patient_group = "BE-LGD"
-    elif diagnosed == "Barrett esophagus - high dysplasia":
-        patient_group = "BE-HGD"
-    elif diagnosed == "Esophageal cancer":
-        patient_group = "EAC"
+    # patient_group = ""
+    # if diagnosed == "No":
+    #     patient_group = "NSE"
+    # elif diagnosed == "Barrett esophagus - no dysplasia":
+    #     patient_group = "BE"
+    # elif diagnosed == "Barrett esophagus - low dysplasia":
+    #     patient_group = "BE-LGD"
+    # elif diagnosed == "Barrett esophagus - high dysplasia":
+    #     patient_group = "BE-HGD"
 
     # Create a DataFrame with the user input
     user_input = pd.DataFrame({
@@ -51,23 +49,25 @@ def app():
         "Gender_F": [gender_f],
         "Gender_M": [gender_m]
     })
-
-    # If the user clicks the "Generate Blood Test Results" button, fetch a sample row from the dataset
-    if st.button("Generate Blood Test Results"):
-        sample_row = df.sample(n=1)
-        blood_results_df = sample_row.drop(columns=["Patient Group", "Age at Collection", "BMI (kg/m2)", "Gender_F", "Gender_M"])
-        user_input = pd.concat([user_input, blood_results_df.reset_index(drop=True)], axis=1)
-
-        # Make a prediction using the model
+    
+    # If the user clicks the "Generate Risk Assessment" button, make a prediction using the model
+    if st.button("Generate Risk Assessment"):
         prediction = model.predict(user_input)
+        prediction_proba = model.predict_proba(user_input)
 
         # Display the prediction
         if prediction[0] == 1:
-            st.write("You have a high risk of developing esophageal cancer.")
+            st.write(f"You have a higher risk of developing Barrets esophagus or esophageal cancer. Probability: {prediction_proba[0][1]*100:.2f}%")
         else:
-            st.write("You have a low risk of developing esophageal cancer.")
+            st.write(f"You have a lower risk of developing Barrets esophagus or esophageal cancer. Probability: {prediction_proba[0][0]*100:.2f}%")
     else:
-        st.write("Click the button to generate blood test results and make a prediction.")
+        st.write("Click the button to generate risk assessment.")
+
+    # # If the user clicks the "Generate Blood Test Results" button, fetch a sample row from the dataset
+    # if st.button("Generate Blood Test Results"):
+    #     sample_row = df.sample(n=1)
+    #     blood_results_df = sample_row.drop(columns=["Patient Group", "Age at Collection", "BMI (kg/m2)", "Gender_F", "Gender_M"])
+    #     user_input = pd.concat([user_input, blood_results_df.reset_index(drop=True)], axis=1)
 
 # Run the Streamlit app
 if __name__ == '__main__':
