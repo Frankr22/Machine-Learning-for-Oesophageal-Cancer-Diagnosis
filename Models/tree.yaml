@@ -1,0 +1,49 @@
+User Input: Diagnosed
+│
+├── No
+│ ├── No Blood Data Input
+│ │ ├── Model Selection: Model 6 (Logistic Regression)
+│ │ ├── Expected Input Shape: All features (including Age, BMI, Gender, and protein measurements or ratios)
+│ │ └── Expected Output: Healthy or Barrett's esophagus (any form) or cancer
+│ ├── Blood Data Input
+│ │ ├── Model Selection: Model 6 (Logistic Regression)
+│ │ ├── Expected Input Shape: Clinical info (including Age, BMI, Gender) and blood test results
+│ │ └── Expected Output: Healthy or Barrett's esophagus (any form) or cancer
+│ └── Invalid Input
+│ └── Error Message: Invalid input. Please select 'Yes' or 'No'.
+│
+└── Yes
+├── Barrett esophagus - no dysplasia
+│ ├── No Blood Data Input
+│ │ ├── Model Selection: Model 2 (Logistic Regression)
+│ │ ├── Expected Input Shape: All features (including Age, BMI, Gender, and protein measurements or ratios)
+│ │ └── Expected Output: Barrett's esophagus (low dysplasia)
+│ ├── Blood Data Input
+│ │ ├── Model Selection: Model 7 (Logistic Regression)
+│ │ ├── Expected Input Shape: Clinical info (including Age, BMI, Gender) and blood test results
+│ │ └── Expected Output: Barrett's esophagus (low dysplasia)
+│ └── Invalid Input
+│ └── Error Message: Invalid input. Please select 'Yes' or 'No'.
+
+├── Barrett esophagus - low dysplasia
+│ ├── No Blood Data Input
+│ │ ├── Model Selection: Model 3 (Logistic Regression)
+│ │ ├── Expected Input Shape: All features (including Age, BMI, Gender, and protein measurements or ratios)
+│ │ └── Expected Output: Barrett's esophagus (high dysplasia)
+│ ├── Blood Data Input
+│ │ ├── Model Selection: Model 8 (Logistic Regression)
+│ │ ├── Expected Input Shape: Clinical info (including Age, BMI, Gender) and blood test results
+│ │ └── Expected Output: Barrett's esophagus (high dysplasia)
+│ └── Invalid Input
+│ └── Error Message: Invalid input. Please select 'Yes' or 'No'.
+└── Barrett esophagus - high dysplasia
+├── No Blood Data Input
+│ ├── Model Selection: Model 4 (Logistic Regression)
+│ ├── Expected Input Shape: All features (including Age, BMI, Gender, and protein measurements or ratios)
+│ └── Expected Output: Cancer
+├── Blood Data Input
+│ ├── Model Selection: Model 9 (Logistic Regression)
+│ ├── Expected Input Shape: Clinical info (including Age, BMI, Gender) and blood test results
+│ └── Expected Output: Cancer
+└── Invalid Input
+└── Error Message: Invalid input. Please select 'Yes' or 'No'.

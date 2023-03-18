@@ -2,7 +2,6 @@
 
 <figure>
   <img src="Images/ai-generated-image-dalle.png" alt="DALL-E AI image" width="25%">
-  <figcaption>An AI-generated image based on the project research question, created with the help of DALL-E.</figcaption>
 </figure>
 
 
@@ -20,19 +19,28 @@ The project uses a dataset of biochemical data from patients with healthy esopha
 The project uses several machine learning algorithms to predict the presence of esophageal cancer in patients, including logistic regression, decision trees, and support vector machines. The algorithms are trained on the dataset and evaluated using various performance metrics, such as accuracy, precision, and recall. We will also investigate whether unsupervised machine learning or deep learning can be used to predict disease categories and if it performs better or worse than supervised machine learning.
 
 ## Usage
-To use this project, you will need to have Python and several Python packages installed, including Scikit-learn, NumPy, and Pandas. You can clone the repository and run the scripts provided to preprocess the data, train and evaluate the machine learning algorithms, and make predictions on new data. You can also explore the Jupyter notebooks provided to visualize the data and results.
+Visit our website for the Cancer Risk Assessment App: [cancer-risk.streamlit.app](https://cancer-risk.streamlit.app/)
+
+To explore the backend of the project, you will need to have Python and several Python packages installed, including Scikit-learn, NumPy, and Pandas. You can clone the repository and run the scripts provided to preprocess the data, train and evaluate the machine learning algorithms, and make predictions on new data. You can also explore the Jupyter notebooks provided to visualize the data and results.
 
 ## Project Structure
 Data/ directory contains the dataset
+- `.streamlit/` directory contains streaming configuration
+- `Analysis_Notebooks/` directory contains jupyter notebooks used in Data Analysis
+- `Data_Cleaned/` contains CSV files of cleaned data
+- `Data_Source/` contains CSV files of original data source
+- `Documents/` contains documentation
+- `ETL_Notebooks/` directory contains jupyter notebooks used in Extract, Transform and Load pre-processing
 - `Images/` directory contains images used in the project such as visualisations.
+- `Models/` directory contains images used in the project such as visualisations.
 
 ## Technologies Used
 We utilized the following technologies in our project:
 
 - Scikit-learn for machine learning
 - Python Pandas for data manipulation
-- X for data visualization
-- HTML/CSS/Bootstrap for frontend web development
+- Tableau for data visualizations
+- Streamlit for frontend web development
 - JavaScript Plotly for interactive data visualization
 - SQL Database for data storage and retrieval
 - Amazon Web Services for cloud-based SQL hosting
