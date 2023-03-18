@@ -30,8 +30,8 @@ We utilized the following technologies in our project:
 
 - Scikit-learn for machine learning
 - Python Pandas for data manipulation
-- X for data visualization
-- HTML/CSS/Bootstrap for frontend web development
+- Tableau for data visualizations
+- Streamlit for frontend web development
 - JavaScript Plotly for interactive data visualization
 - SQL Database for data storage and retrieval
 - Amazon Web Services for cloud-based SQL hosting
