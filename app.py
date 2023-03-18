@@ -56,10 +56,14 @@ def app():
     )
 
     # Load the trained models and scalers
-    model6 = load('Models/Model_Saved/model6_LogisticRegression.joblib')
-    model6_X_scaler = load('Models/Model_Saved/model6_X_scaler.joblib')
-    model11 = load('Models/Model_Saved/model11_LogisticRegression.joblib')
-    model11_X_scaler = load('Models/Model_Saved/model11_X_scaler.joblib')
+    model1 = load('Models/Model_Saved/Model1.joblib')
+    model1_X_scaler = load('Models/Model_Saved/model1_X_scaler.joblib')
+    model2 = load('Models/Model_Saved/Model2.joblib')
+    model2_X_scaler = load('Models/Model_Saved/model2_X_scaler.joblib')
+    model3 = load('Models/Model_Saved/Model3.joblib')
+    model3_X_scaler = load('Models/Model_Saved/model3_X_scaler.joblib')
+    model4 = load('Models/Model_Saved/Model4.joblib')
+    model4_X_scaler = load('Models/Model_Saved/model4_X_scaler.joblib')
 
     with st.container():
         st.write("Welcome to the Oesophageal Cancer Risk Assessment app!")
@@ -88,9 +92,7 @@ def app():
     elif unit_system == 'Imperial':
         bmi = 703 * (weight / (height**2)) # lb / in^2
 
-    if diagnosed == "No":
-        model = model6
-
+    # Split sex into binary
     gender_f = 1 if sex == "female" else 0
     gender_m = 1 if sex == "male" else 0
 
@@ -125,17 +127,17 @@ def app():
     
     # Select the correct model and scaler based on the user's input
     if diagnosed == "No" and blood_sample_data is None:
-        model = model6
-        scaler = model6_X_scaler
+        model = model1
+        scaler = model1_X_scaler
     elif diagnosed == "No" and blood_sample_data is not None:
-        model = model6
-        scaler = model6_X_scaler
+        model = model2
+        scaler = model2_X_scaler
     elif diagnosed == "Barrett esophagus - no/low dysplasia" and blood_sample_data is None:
-        model = model11
-        scaler = model11_X_scaler
+        model = model3
+        scaler = model3_X_scaler
     elif diagnosed == "Barrett esophagus - no/low dysplasia" and blood_sample_data is not None:
-        model = model11
-        scaler = model11_X_scaler
+        model = model4
+        scaler = model4_X_scaler
 
     # If the user clicks the "Generate Risk Assessment" button, scale the data and make a prediction using the model
     if left_column.button("Generate Risk Assessment"):
