@@ -19,7 +19,10 @@ def app():
         page_title="CancerRisk+",
         page_icon=logo_img,
         layout="wide",
-        initial_sidebar_state="collapsed",
+        initial_sidebar_state="auto",
+        menu_items={
+        'About': "Oesophageal cancer is a life-threatening disease affecting millions of people worldwide, and early diagnosis is crucial for improving survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions."
+        }
     )
 
     # Expandable Sidebar
@@ -94,25 +97,25 @@ def app():
     model20 = load('Models/Model_Saved/model20_LogisticRegression.joblib')
     model20_X_scaler = load('Models/Model_Saved/model20_X_scaler.joblib')
 
-
-    # Create two columns for the layout
-    left_column, right_column = st.columns(2)
-
-    left_column.write("Welcome to the Oesophageal Cancer Risk Assessment app!")
-    left_column.write("\nThis app employs cutting-edge machine learning techniques to assess your risk of developing oesophageal cancer by analyzing pre-screening information and blood sample data.")
-    left_column.write("\nGet started by inputting your data below to assess your oesophageal cancer risk.")
+    with st.container():
+        st.write("Welcome to the Oesophageal Cancer Risk Assessment app!")
+        st.write("\nThis app employs cutting-edge machine learning techniques to assess your risk of developing oesophageal cancer by analyzing pre-screening information and blood sample data.")
+        st.write("\nGet started by inputting your data below to assess your oesophageal cancer risk.")
 
     # Add the rest of the text below the risk assessment in a separate row
     additional_text = """
     Oesophageal cancer is a life-threatening disease affecting millions of people worldwide, and early diagnosis is crucial for improving survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. Our app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, our models have been trained and evaluated to deliver accurate predictions.
     """
 
+    # Create two columns for the layout
+    left_column, right_column = st.columns(2)
+
     # Get user data
     age = left_column.number_input("Enter your age:", value=30, min_value=18, max_value=100, format='%i', key='age', help='Age in years')
-    sex = left_column.selectbox("Select your sex:", ["male", "female"])
-    height = left_column.number_input("Enter your height:", value=170, min_value=100, max_value=250, step=1, format='%i')
-    weight = left_column.number_input("Enter your weight:", value=70, min_value=10, max_value=200, step=1, format='%i')
-    unit_system = left_column.radio("Select unit system:", options=['Metric', 'Imperial'])
+    sex = left_column.selectbox("Select your sex:", ["male", "female"], help='Male or Female')
+    height = left_column.number_input("Enter your height:", value=170, min_value=100, max_value=250, step=1, format='%i',help='Enter in cms for Metric or inches for Imperial')
+    weight = left_column.number_input("Enter your weight:", value=70, min_value=10, max_value=200, step=1, format='%i', help = 'Enter in kgs for Metric or lbs for Imperial')
+    unit_system = left_column.radio("Select unit system:", options=['Metric', 'Imperial'], help='')
     diagnosed = left_column.selectbox("Have you been diagnosed with Barret esophagus?", ["No", "Barrett esophagus - no dysplasia", "Barrett esophagus - low dysplasia", "Barrett esophagus - high dysplasia"])
 
     # Calculate BMI based on unit system
@@ -137,8 +140,7 @@ def app():
 
     # Upload blood sample data or generate example data
     blood_sample_data = None
-    uploaded_file = left_column.file_uploader("Please upload your blood sample data (CSV file) OR generate example sample data by clicking the button below", type=["csv"], help='Blood sample data must be in the same format as the example data. Example data can be downloaded from the GitHub repository.')
-
+    uploaded_file = left_column.file_uploader("Please upload your blood sample data (CSV file) OR generate example sample data by clicking the button below", type=["csv"], help='To test the app please generate sample data. If providing blood sample data it must be in the same format as the example data. Example data can be downloaded from the GitHub repository.')
     if uploaded_file is not None:
         blood_sample_data = pd.read_csv(uploaded_file)
         left_column.success("Blood sample data uploaded successfully.")
