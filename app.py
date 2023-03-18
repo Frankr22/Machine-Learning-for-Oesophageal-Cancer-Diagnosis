@@ -56,46 +56,10 @@ def app():
     )
 
     # Load the trained models and scalers
-    model1 = load('Models/Model_Saved/model1_LogisticRegression.joblib')
-    model1_X_scaler = load('Models/Model_Saved/model1_X_scaler.joblib')
-    model2 = load('Models/Model_Saved/model2_LogisticRegression.joblib')
-    model2_X_scaler = load('Models/Model_Saved/model2_X_scaler.joblib')
-    model3 = load('Models/Model_Saved/model3_LogisticRegression.joblib')
-    model3_X_scaler = load('Models/Model_Saved/model3_X_scaler.joblib')
-    model4 = load('Models/Model_Saved/model4_LogisticRegression.joblib')
-    model4_X_scaler = load('Models/Model_Saved/model4_X_scaler.joblib')
-    model5 = load('Models/Model_Saved/model5_LogisticRegression.joblib')
-    model5_X_scaler = load('Models/Model_Saved/model5_X_scaler.joblib')
     model6 = load('Models/Model_Saved/model6_LogisticRegression.joblib')
     model6_X_scaler = load('Models/Model_Saved/model6_X_scaler.joblib')
-    model7 = load('Models/Model_Saved/model7_LogisticRegression.joblib')
-    model7_X_scaler = load('Models/Model_Saved/model7_X_scaler.joblib')
-    model8 = load('Models/Model_Saved/model8_LogisticRegression.joblib')
-    model8_X_scaler = load('Models/Model_Saved/model8_X_scaler.joblib')
-    model9 = load('Models/Model_Saved/model9_LogisticRegression.joblib')
-    model9_X_scaler = load('Models/Model_Saved/model9_X_scaler.joblib')
-    model10 = load('Models/Model_Saved/model10_LogisticRegression.joblib')
-    model10_X_scaler = load('Models/Model_Saved/model10_X_scaler.joblib')
     model11 = load('Models/Model_Saved/model11_LogisticRegression.joblib')
     model11_X_scaler = load('Models/Model_Saved/model11_X_scaler.joblib')
-    model12 = load('Models/Model_Saved/model12_LogisticRegression.joblib')
-    model12_X_scaler = load('Models/Model_Saved/model12_X_scaler.joblib')
-    model13 = load('Models/Model_Saved/model13_LogisticRegression.joblib')
-    model13_X_scaler = load('Models/Model_Saved/model13_X_scaler.joblib')
-    model14 = load('Models/Model_Saved/model14_LogisticRegression.joblib')
-    model14_X_scaler = load('Models/Model_Saved/model14_X_scaler.joblib')
-    model15 = load('Models/Model_Saved/model15_LogisticRegression.joblib')
-    model15_X_scaler = load('Models/Model_Saved/model15_X_scaler.joblib')
-    model16 = load('Models/Model_Saved/model16_LogisticRegression.joblib')
-    model16_X_scaler = load('Models/Model_Saved/model16_X_scaler.joblib')
-    model17 = load('Models/Model_Saved/model17_LogisticRegression.joblib')
-    model17_X_scaler = load('Models/Model_Saved/model17_X_scaler.joblib')
-    model18 = load('Models/Model_Saved/model18_LogisticRegression.joblib')
-    model18_X_scaler = load('Models/Model_Saved/model18_X_scaler.joblib')
-    model19 = load('Models/Model_Saved/model19_LogisticRegression.joblib')
-    model19_X_scaler = load('Models/Model_Saved/model19_X_scaler.joblib')
-    model20 = load('Models/Model_Saved/model20_LogisticRegression.joblib')
-    model20_X_scaler = load('Models/Model_Saved/model20_X_scaler.joblib')
 
     with st.container():
         st.write("Welcome to the Oesophageal Cancer Risk Assessment app!")
@@ -116,7 +80,7 @@ def app():
     height = left_column.number_input("Enter your height:", value=170, min_value=100, max_value=250, step=1, format='%i',help='Enter in cms for Metric or inches for Imperial')
     weight = left_column.number_input("Enter your weight:", value=70, min_value=10, max_value=200, step=1, format='%i', help = 'Enter in kgs for Metric or lbs for Imperial')
     unit_system = left_column.radio("Select unit system:", options=['Metric', 'Imperial'], help='')
-    diagnosed = left_column.selectbox("Have you been diagnosed with Barret esophagus?", ["No", "Barrett esophagus - no dysplasia", "Barrett esophagus - low dysplasia", "Barrett esophagus - high dysplasia"])
+    diagnosed = left_column.selectbox("Have you been diagnosed with Barret esophagus?", ["No", "Barrett esophagus - no/low dysplasia"])
 
     # Calculate BMI based on unit system
     if unit_system == 'Metric':
@@ -160,18 +124,18 @@ def app():
     left_column.markdown("<br/>", unsafe_allow_html=True)
     
     # Select the correct model and scaler based on the user's input
-    if diagnosed == "No":
+    if diagnosed == "No" and blood_sample_data is None:
         model = model6
         scaler = model6_X_scaler
-    elif diagnosed == "Barrett esophagus - no dysplasia":
+    elif diagnosed == "No" and blood_sample_data is not None:
+        model = model6
+        scaler = model6_X_scaler
+    elif diagnosed == "Barrett esophagus - no/low dysplasia" and blood_sample_data is None:
         model = model11
         scaler = model11_X_scaler
-    elif diagnosed == "Barrett esophagus - low dysplasia":
-        model = model12
-        scaler = model12_X_scaler
-    elif diagnosed == "Barrett esophagus - high dysplasia":
-        model = model14
-        scaler = model14_X_scaler
+    elif diagnosed == "Barrett esophagus - no/low dysplasia" and blood_sample_data is not None:
+        model = model11
+        scaler = model11_X_scaler
 
     # If the user clicks the "Generate Risk Assessment" button, scale the data and make a prediction using the model
     if left_column.button("Generate Risk Assessment"):
