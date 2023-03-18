@@ -2,55 +2,130 @@
 import pandas as pd
 import streamlit as st
 from joblib import load
+from PIL import Image
+import numpy as np
 
-# local_file_path = "Data_Cleaned/User_Samples/users.csv"
-# df = pd.read_csv(local_file_path)
-# df.head()
+local_file_path = "Data_Cleaned/User_Samples/users.csv"
+df = pd.read_csv(local_file_path)
     
 # Define Streamlit app
 def app():
-    
-    # Load the trained model and scaler
+
+    # Load logo image
+    logo_img = Image.open("Images/ai-generated-image-dalle.png")
+
+    # Set the app configuration
+    st.set_page_config(
+        page_title="CancerRisk+",
+        page_icon=logo_img,
+        layout="wide",
+        initial_sidebar_state="collapsed",
+    )
+
+    # Expandable Sidebar
+    st.sidebar.title("Navigation")
+    st.sidebar.write("Expand the sections below to access different parts of the app.")
+
+    # Create an expandable sidebar for additional information
+    with st.sidebar.expander("Learn More"):
+        st.write("Find more information about oesophageal cancer, risk factors, and prevention:")
+        st.write("[American Cancer Society - Oesophageal Cancer](https://www.cancer.org/cancer/esophagus-cancer.html)")
+        st.write("[National Cancer Institute - Oesophageal Cancer](https://www.cancer.gov/types/esophageal)")
+
+    # GitHub Repository section
+    github_expander = st.sidebar.expander("GitHub Repository")
+    with github_expander:
+        st.markdown(
+            "[Click here](https://github.com/Frankr22/ML-diagnosis-of-esophageal-cancer) to visit the GitHub repository for this project."
+        )
+
+    # Create an empty container for the header
+    header = st.empty()
+    # Add logo image and app name to the header using Markdown
+    header.markdown(
+        f"""
+        <div style="display: flex; align-items: center;">
+            <img src="data:image/png;base64,{image_to_base64(logo_img)}" style="height: 50px; margin-right: 10px;" />
+            <h1 style="margin: 0;">CancerRisk+</h1>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Load the trained models and scalers
+    model1 = load('Models/Model_Saved/model1_LogisticRegression.joblib')
+    model1_X_scaler = load('Models/Model_Saved/model1_X_scaler.joblib')
+    model2 = load('Models/Model_Saved/model2_LogisticRegression.joblib')
+    model2_X_scaler = load('Models/Model_Saved/model2_X_scaler.joblib')
+    model3 = load('Models/Model_Saved/model3_LogisticRegression.joblib')
+    model3_X_scaler = load('Models/Model_Saved/model3_X_scaler.joblib')
+    model4 = load('Models/Model_Saved/model4_LogisticRegression.joblib')
+    model4_X_scaler = load('Models/Model_Saved/model4_X_scaler.joblib')
+    model5 = load('Models/Model_Saved/model5_LogisticRegression.joblib')
+    model5_X_scaler = load('Models/Model_Saved/model5_X_scaler.joblib')
     model6 = load('Models/Model_Saved/model6_LogisticRegression.joblib')
     model6_X_scaler = load('Models/Model_Saved/model6_X_scaler.joblib')
+    model7 = load('Models/Model_Saved/model7_LogisticRegression.joblib')
+    model7_X_scaler = load('Models/Model_Saved/model7_X_scaler.joblib')
+    model8 = load('Models/Model_Saved/model8_LogisticRegression.joblib')
+    model8_X_scaler = load('Models/Model_Saved/model8_X_scaler.joblib')
+    model9 = load('Models/Model_Saved/model9_LogisticRegression.joblib')
+    model9_X_scaler = load('Models/Model_Saved/model9_X_scaler.joblib')
+    model10 = load('Models/Model_Saved/model10_LogisticRegression.joblib')
+    model10_X_scaler = load('Models/Model_Saved/model10_X_scaler.joblib')
+    model11 = load('Models/Model_Saved/model11_LogisticRegression.joblib')
+    model11_X_scaler = load('Models/Model_Saved/model11_X_scaler.joblib')
+    model12 = load('Models/Model_Saved/model12_LogisticRegression.joblib')
+    model12_X_scaler = load('Models/Model_Saved/model12_X_scaler.joblib')
+    model13 = load('Models/Model_Saved/model13_LogisticRegression.joblib')
+    model13_X_scaler = load('Models/Model_Saved/model13_X_scaler.joblib')
+    model14 = load('Models/Model_Saved/model14_LogisticRegression.joblib')
+    model14_X_scaler = load('Models/Model_Saved/model14_X_scaler.joblib')
+    model15 = load('Models/Model_Saved/model15_LogisticRegression.joblib')
+    model15_X_scaler = load('Models/Model_Saved/model15_X_scaler.joblib')
+    model16 = load('Models/Model_Saved/model16_LogisticRegression.joblib')
+    model16_X_scaler = load('Models/Model_Saved/model16_X_scaler.joblib')
+    model17 = load('Models/Model_Saved/model17_LogisticRegression.joblib')
+    model17_X_scaler = load('Models/Model_Saved/model17_X_scaler.joblib')
+    model18 = load('Models/Model_Saved/model18_LogisticRegression.joblib')
+    model18_X_scaler = load('Models/Model_Saved/model18_X_scaler.joblib')
+    model19 = load('Models/Model_Saved/model19_LogisticRegression.joblib')
+    model19_X_scaler = load('Models/Model_Saved/model19_X_scaler.joblib')
+    model20 = load('Models/Model_Saved/model20_LogisticRegression.joblib')
+    model20_X_scaler = load('Models/Model_Saved/model20_X_scaler.joblib')
 
-    # Set app title
-    st.title('Oesophageal Cancer Risk Assessment app')
 
     # Create two columns for the layout
     left_column, right_column = st.columns(2)
 
-    left_column.write("Welcome to our Oesophageal Cancer Risk Assessment app!")
-    left_column.write("\nThis app utilizes advanced machine learning algorithms to estimate your risk of developing oesophageal cancer based on pre-screening and blood sample data.")
-    left_column.write("\nGet started by inputting your data to assess your oesophageal cancer risk.")
-    left_column.image("Images/ai-generated-image-dalle.png", width=300)
+    left_column.write("Welcome to the Oesophageal Cancer Risk Assessment app!")
+    left_column.write("\nThis app employs cutting-edge machine learning techniques to assess your risk of developing oesophageal cancer by analyzing pre-screening information and blood sample data.")
+    left_column.write("\nGet started by inputting your data below to assess your oesophageal cancer risk.")
 
     # Add the rest of the text below the risk assessment in a separate row
     additional_text = """
     Oesophageal cancer is a life-threatening disease affecting millions of people worldwide, and early diagnosis is crucial for improving survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. Our app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, our models have been trained and evaluated to deliver accurate predictions.
     """
 
-    # Get user input
-    age = right_column.number_input("Enter your age", value=30, min_value=18, max_value=100)
-    sex = right_column.selectbox("Select your sex", ["male", "female"])
-    bmi = right_column.number_input("Enter your BMI", value=25, min_value=0, max_value=50)
-    diagnosed = right_column.selectbox("Have you been diagnosed with Barret esophagus?", ["No", "Barrett esophagus - no dysplasia", "Barrett esophagus - low dysplasia", "Barrett esophagus - high dysplasia"])
+    # Get user data
+    age = left_column.number_input("Enter your age:", value=30, min_value=18, max_value=100, format='%i', key='age', help='Age in years')
+    sex = left_column.selectbox("Select your sex:", ["male", "female"])
+    height = left_column.number_input("Enter your height:", value=170, min_value=100, max_value=250, step=1, format='%i')
+    weight = left_column.number_input("Enter your weight:", value=70, min_value=10, max_value=200, step=1, format='%i')
+    unit_system = left_column.radio("Select unit system:", options=['Metric', 'Imperial'])
+    diagnosed = left_column.selectbox("Have you been diagnosed with Barret esophagus?", ["No", "Barrett esophagus - no dysplasia", "Barrett esophagus - low dysplasia", "Barrett esophagus - high dysplasia"])
+
+    # Calculate BMI based on unit system
+    if unit_system == 'Metric':
+        bmi = weight / ((height/100)**2) # kg / m^2
+    elif unit_system == 'Imperial':
+        bmi = 703 * (weight / (height**2)) # lb / in^2
 
     if diagnosed == "No":
         model = model6
 
     gender_f = 1 if sex == "female" else 0
     gender_m = 1 if sex == "male" else 0
-
-    # patient_group = ""
-    # if diagnosed == "No":
-    #     patient_group = "NSE"
-    # elif diagnosed == "Barrett esophagus - no dysplasia":
-    #     patient_group = "BE"
-    # elif diagnosed == "Barrett esophagus - low dysplasia":
-    #     patient_group = "BE-LGD"
-    # elif diagnosed == "Barrett esophagus - high dysplasia":
-    #     patient_group = "BE-HGD"
 
     # Create a DataFrame with the user input
     user_input = pd.DataFrame({
@@ -60,33 +135,80 @@ def app():
         "Gender_M": [gender_m]
     })
 
-    # Scale the user input data
-    user_input_scaled = model6_X_scaler.transform(user_input)
+    # Upload blood sample data or generate example data
+    blood_sample_data = None
+    uploaded_file = left_column.file_uploader("Please upload your blood sample data (CSV file) OR generate example sample data by clicking the button below", type=["csv"], help='Blood sample data must be in the same format as the example data. Example data can be downloaded from the GitHub repository.')
+
+    if uploaded_file is not None:
+        blood_sample_data = pd.read_csv(uploaded_file)
+        left_column.success("Blood sample data uploaded successfully.")
+    else:
+        if left_column.button("Generate example blood sample data"):
+            # Generate example blood sample data
+            blood_sample_data = generate_example_data()
+            left_column.success("Example blood sample data generated successfully.")
+
+    # If the user has uploaded blood sample data, display the data
+    if blood_sample_data is not None:
+        left_column.write("Blood sample data:")
+        left_column.dataframe(blood_sample_data)
+
+    # Add a horizontal line and some space
+    left_column.markdown("<hr/>", unsafe_allow_html=True)
+    left_column.markdown("<br/>", unsafe_allow_html=True)
     
-    # If the user clicks the "Generate Risk Assessment" button, make a prediction using the model
-    if right_column.button("Generate Risk Assessment"):
+    # Select the correct model and scaler based on the user's input
+    if diagnosed == "No":
+        model = model6
+        scaler = model6_X_scaler
+    elif diagnosed == "Barrett esophagus - no dysplasia":
+        model = model11
+        scaler = model11_X_scaler
+    elif diagnosed == "Barrett esophagus - low dysplasia":
+        model = model12
+        scaler = model12_X_scaler
+    elif diagnosed == "Barrett esophagus - high dysplasia":
+        model = model14
+        scaler = model14_X_scaler
+
+    # If the user clicks the "Generate Risk Assessment" button, scale the data and make a prediction using the model
+    if left_column.button("Generate Risk Assessment"):
+        # Scale the user input data
+        user_input_scaled = scaler.transform(user_input)
+        # If blood sample data is available, append it to the user input
+        if blood_sample_data is not None:
+            user_input_scaled = np.hstack([user_input_scaled, blood_sample_data.to_numpy()])
         prediction = model.predict(user_input_scaled)
         prediction_proba = model.predict_proba(user_input_scaled)
 
         # Display the prediction
         if prediction[0] == 1:
-            right_column.write(f"Based on the information you provided and our machine learning model's understanding of the relationship between various factors and oesophageal cancer risk, it is estimated that you have a higher risk of developing oesophageal cancer. The model predicts a {prediction_proba[0][1]*100:.2f}% probability of you being in the higher-risk group.\n\nPlease note that this tool is not a substitute for professional medical advice, diagnosis, or treatment. The results should be considered as an estimate and should not be relied upon for decision-making regarding your health. Always consult with a healthcare professional for personalised medical advice.")
+            left_column.write(f"Based on the information you provided and our machine learning model's understanding of the relationship between various factors and oesophageal cancer risk, it is estimated that you have a higher risk of developing oesophageal cancer.\n\n The model predicts a {prediction_proba[0][1]*100:.2f}% probability of you being in the higher-risk group.\n\n Please note that this tool is not a substitute for professional medical advice, diagnosis, or treatment. The results should be considered as an estimate and should not be relied upon for decision-making regarding your health. Always consult with a healthcare professional for personalised medical advice.")
         else:
-            right_column.write(f"Based on the information you provided and our machine learning model's understanding of the relationship between various factors and oesophageal cancer risk, it is estimated that you have a lower risk of developing oesophageal cancer. The model predicts a {prediction_proba[0][0]*100:.2f}% probability of you being in the lower-risk group.\n\nPlease note that this tool is not a substitute for professional medical advice, diagnosis, or treatment. The results should be considered as an estimate and should not be relied upon for decision-making regarding your health. Always consult with a healthcare professional for personalised medical advice.")
+            left_column.write(f"Based on the information you provided and our machine learning model's understanding of the relationship between various factors and oesophageal cancer risk, it is estimated that you have a lower risk of developing oesophageal cancer.\n\n The model predicts a {prediction_proba[0][0]*100:.2f}% probability of you being in the lower-risk group.\n\n Please note that this tool is not a substitute for professional medical advice, diagnosis, or treatment. The results should be considered as an estimate and should not be relied upon for decision-making regarding your health. Always consult with a healthcare professional for personalised medical advice.")
     else:
-        right_column.write("Click the button to generate risk assessment.")
-
-    # # If the user clicks the "Generate Blood Test Results" button, fetch a sample row from the dataset
-    # if st.button("Generate Blood Test Results"):
-    #     sample_row = df.sample(n=1)
-    #     blood_results_df = sample_row.drop(columns=["Patient Group", "Age at Collection", "BMI (kg/m2)", "Gender_F", "Gender_M"])
-    #     user_input = pd.concat([user_input, blood_results_df.reset_index(drop=True)], axis=1)
+        left_column.write("Click the button to generate risk assessment.")
 
     # Create a new row to display the additional text below the risk assessment tool
     additional_text_row = st.container()
     with additional_text_row:
         st.markdown("## About")
         st.markdown(additional_text)
+
+def image_to_base64(img):
+    import base64
+    from io import BytesIO
+
+    buffered = BytesIO()
+    img.save(buffered, format="PNG")
+    img_str = base64.b64encode(buffered.getvalue()).decode()
+    return img_str
+
+def generate_example_data():
+    # Use a sample row from users.csv as the example blood sample data
+    sample_row = df.sample(n=1)
+    blood_results_df = sample_row.drop(columns=["Patient Group", "Age at Collection", "BMI (kg/m2)", "Gender_F", "Gender_M"])
+    return blood_results_df.reset_index(drop=True)
 
 # Run the Streamlit app
 if __name__ == '__main__':
