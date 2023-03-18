@@ -21,7 +21,7 @@ The project uses several machine learning algorithms to predict the presence of 
 ## Usage
 Visit our website for the Cancer Risk Assessment App: [cancer-risk.streamlit.app](https://cancer-risk.streamlit.app/)
 
-To use this project, you will need to have Python and several Python packages installed, including Scikit-learn, NumPy, and Pandas. You can clone the repository and run the scripts provided to preprocess the data, train and evaluate the machine learning algorithms, and make predictions on new data. You can also explore the Jupyter notebooks provided to visualize the data and results.
+To explore the backend of the project, you will need to have Python and several Python packages installed, including Scikit-learn, NumPy, and Pandas. You can clone the repository and run the scripts provided to preprocess the data, train and evaluate the machine learning algorithms, and make predictions on new data. You can also explore the Jupyter notebooks provided to visualize the data and results.
 
 ## Project Structure
 Data/ directory contains the dataset
