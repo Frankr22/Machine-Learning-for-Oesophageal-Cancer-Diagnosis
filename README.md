@@ -2,7 +2,6 @@
 
 <figure>
   <img src="Images/ai-generated-image-dalle.png" alt="DALL-E AI image" width="25%">
-  <figcaption>An AI-generated image based on the project research question, created with the help of DALL-E.</figcaption>
 </figure>
 
 
