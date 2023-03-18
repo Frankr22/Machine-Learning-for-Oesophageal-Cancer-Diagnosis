@@ -25,7 +25,14 @@ To explore the backend of the project, you will need to have Python and several 
 
 ## Project Structure
 Data/ directory contains the dataset
+- `.streamlit/` directory contains streaming configuration
+- `Analysis_Notebooks/` directory contains jupyter notebooks used in Data Analysis
+- `Data_Cleaned/` contains CSV files of cleaned data
+- `Data_Source/` contains CSV files of original data source
+- `Documents/` contains documentation
+- `ETL_Notebooks/` directory contains jupyter notebooks used in Extract, Transform and Load pre-processing
 - `Images/` directory contains images used in the project such as visualisations.
+- `Models/` directory contains images used in the project such as visualisations.
 
 ## Technologies Used
 We utilized the following technologies in our project:
