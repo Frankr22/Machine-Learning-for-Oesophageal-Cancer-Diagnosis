@@ -19,6 +19,8 @@ The project uses a dataset of biochemical data from patients with healthy esopha
 The project uses several machine learning algorithms to predict the presence of esophageal cancer in patients, including logistic regression, decision trees, and support vector machines. The algorithms are trained on the dataset and evaluated using various performance metrics, such as accuracy, precision, and recall. We will also investigate whether unsupervised machine learning or deep learning can be used to predict disease categories and if it performs better or worse than supervised machine learning.
 
 ## Usage
+Visit our website for the Cancer Risk Assessment App: [cancer-risk.streamlit.app](https://cancer-risk.streamlit.app/)
+
 To use this project, you will need to have Python and several Python packages installed, including Scikit-learn, NumPy, and Pandas. You can clone the repository and run the scripts provided to preprocess the data, train and evaluate the machine learning algorithms, and make predictions on new data. You can also explore the Jupyter notebooks provided to visualize the data and results.
 
 ## Project Structure
