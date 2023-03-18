@@ -2,7 +2,7 @@ User Input: Diagnosed
 │
 ├── No
 │ ├── No Blood Data Input
-│ │ ├── Model Selection: Model 1 (Logistic Regression)
+│ │ ├── Model Selection: Model 6 (Logistic Regression)
 │ │ ├── Expected Input Shape: All features (including Age, BMI, Gender, and protein measurements or ratios)
 │ │ └── Expected Output: Healthy or Barrett's esophagus (any form) or cancer
 │ ├── Blood Data Input
@@ -24,6 +24,7 @@ User Input: Diagnosed
 │ │ └── Expected Output: Barrett's esophagus (low dysplasia)
 │ └── Invalid Input
 │ └── Error Message: Invalid input. Please select 'Yes' or 'No'.
+
 ├── Barrett esophagus - low dysplasia
 │ ├── No Blood Data Input
 │ │ ├── Model Selection: Model 3 (Logistic Regression)
