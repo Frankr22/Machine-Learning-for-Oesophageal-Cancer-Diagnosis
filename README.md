@@ -39,11 +39,17 @@ We utilized the following technologies in our project:
 - Tableau for data visualizations
 - Streamlit for frontend web development
 
+## Future Work
+- Explore unsupervised learning and deep learning models to imporve the model
+- Increase the size of the dataset
+- Deploy the web application on a cloud platform, such as Google Cloud or Amazon AWS
+
+## Contributors
+This project was developed by Robert Franklin (GitHub username: Frankr22), Marisa Duong (GitHub username: MarDuo2022), Brianna O'Connor (GitHub username: borruu) as part of their capstone project for their data analytics course. They welcome contributions from other data scientists, machine learning enthusiasts, and medical professionals who are interested in improving the diagnosis of esophageal cancer.
+
 ## References
+- Data Source: Shah AK, et al. (2018) Evaluation of Serum Glycoprotein Biomarker Candidates for Detection of Esophageal Adenocarcinoma and Surveillance of Barrett's Esophagus. Mol Cell Proteomics 17(12):2324-2334. doi:10.1074/mcp.RA118.000734
 - Scikit-learn documentation: https://scikit-learn.org/stable/documentation.html
 - Python Pandas documentation: https://pandas.pydata.org/docs/
 - Tableau documentation: https://help.tableau.com/current/guides/get-started-tutorial/en-us/get-started-tutorial-home.htm
 - Streamlit documentation: https://docs.streamlit.io/en/stable/
-
-## Contributors
-This project was developed by Robert Franklin (GitHub username: Frankr22), Marisa Duong (GitHub username: MarDuo2022), Brianna O'Connor (GitHub username: borruu) as part of their capstone project for their data analytics course. They welcome contributions from other data scientists, machine learning enthusiasts, and medical professionals who are interested in improving the diagnosis of esophageal cancer.
