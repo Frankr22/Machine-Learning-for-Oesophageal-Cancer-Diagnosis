@@ -6,8 +6,6 @@
 
 This project aims to investigate the potential of machine learning algorithms in diagnosing oesophageal cancer using biochemical data. The project focuses on using raw data output from biochemical labs to predict the presence of oesophageal cancer in patients.
 
-## Table of Contents
-
 ## Background
 Oesophageal cancer is a deadly disease that affects millions of people worldwide. Early diagnosis is key to increasing survival rates, but traditional diagnostic methods such as endoscopy can be invasive and costly. This project aims to explore the potential of machine learning algorithms to diagnose oesophageal cancer using raw biochemical data, which could potentially lead to a faster, cheaper, and less invasive diagnosis.
 
