@@ -16,12 +16,12 @@ def app():
 
     # Set the app configuration
     st.set_page_config(
-        page_title="CancerRisk+",
+        page_title="OesoCancerRisk+",
         page_icon=logo_img,
         layout="wide",
         initial_sidebar_state="auto",
         menu_items={
-        'About': "Oesophageal cancer is a life-threatening disease affecting millions of people worldwide, and early diagnosis is crucial for improving survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions."
+        'About': "Oesophageal cancer is 8th most common cancer in the world, and is the 6th most common cause of cancer-related deaths (WHO). Ealy diagnosis is crucial for timely treatment and improved survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions."
         }
     )
 
@@ -132,10 +132,10 @@ def app():
     elif diagnosed == "No" and blood_sample_data is not None:
         model = model2
         scaler = model2_X_scaler
-    elif diagnosed == "Barrett esophagus - no/low dysplasia" and blood_sample_data is None:
+    elif diagnosed == "Barrett oesophagus - no/low dysplasia" and blood_sample_data is None:
         model = model3
         scaler = model3_X_scaler
-    elif diagnosed == "Barrett esophagus - no/low dysplasia" and blood_sample_data is not None:
+    elif diagnosed == "Barrett oesophagus - no/low dysplasia" and blood_sample_data is not None:
         model = model4
         scaler = model4_X_scaler
 
