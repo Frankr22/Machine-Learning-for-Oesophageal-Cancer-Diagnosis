@@ -4,13 +4,13 @@
   <img src="Images/ai-generated-image-dalle.png" alt="DALL-E AI image" width="25%">
 </figure>
 
-This project aims to investigate the potential of machine learning algorithms in diagnosing oesophageal cancer using biochemical data. The project focuses on using raw data output from biochemical labs to predict the presence of oesophageal cancer in patients.
+This project aims to develop a data product prototype, using machine learning algorithms and inputs from clinical and biochemical data, to diagnose oesophageal cancer.
 
 ## Background
-Oesophageal cancer is a deadly disease that affects millions of people worldwide. Early diagnosis is key to increasing survival rates, but traditional diagnostic methods such as endoscopy can be invasive and costly. This project aims to explore the potential of machine learning algorithms to diagnose oesophageal cancer using raw biochemical data, which could potentially lead to a faster, cheaper, and less invasive diagnosis.
+Oesophageal cancer is 8th most common cancer in the world, and is the 6th most common cause of cancer-related deaths (WHO). Ealy diagnosis is crucial for timely treatment and improved survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions.
 
 ## Dataset
-The project uses a dataset of biochemical data from patients with healthy esophagi, Barrett's esophagus, and oesophageal cancer. For this project, we will focus on using the cohort of 253 samples as a training dataset and the cohort of 45 samples as a validation dataset. Additionally, we might try shuffling the cohort samples to create mixed training and validation datasets to evaluate if the models developed using this approach perform better.
+The project uses clinical data (eg. BMI, sex, age) and biochemical data (protein levels) of 300 people, who can be Healthy, have Barrett's Oesophagus or have been diagnosed with Oesophageal cancer. We obtained data from a published study that included 2 cohorts (48-sample American cohort and 252-sample Australian cohort).
 
 ## Machine Learning Algorithms
 The project uses several machine learning algorithms to predict the presence of esophageal cancer in patients, including logistic regression, decision trees, and support vector machines. The algorithms are trained on the dataset and evaluated using various performance metrics, such as accuracy, precision, and recall. We will also investigate whether unsupervised machine learning or deep learning can be used to predict disease categories and if it performs better or worse than supervised machine learning.
