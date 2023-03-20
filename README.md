@@ -19,7 +19,7 @@ The algorithms are trained on the dataset and evaluated using various performanc
 
 ## Usage
 - Visit our website for the Cancer Risk Assessment App: [cancer-risk.streamlit.app](https://cancer-risk.streamlit.app/)
-- To run the streamlit app locally, run code `streamlit run app.py/` in GitBash, same directory as `app.py/`
+- To run the streamlit app locally, run code `streamlit run app.py` in GitBash, same directory as `app.py`
 - To explore the backend of the project, you will need to have Python and several Python packages installed, including Scikit-learn, NumPy, and Pandas (see requirements.txt). You can clone the repository and run the scripts provided to preprocess the data, train and evaluate the machine learning algorithms, and make predictions on new data. You can also explore the Jupyter notebooks provided to visualize the data and results.
 
 ## Repository Structure
