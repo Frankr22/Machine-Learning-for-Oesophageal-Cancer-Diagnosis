@@ -41,9 +41,10 @@ We utilized the following technologies in our project:
 - Streamlit for front-end web development
 
 ## Future Work
-- Explore unsupervised learning and deep learning models to imporve the model
-- Increase the size of the dataset
+- Increase the size of the training dataset
+- Improve Data storage
 - Deploy the web application on a cloud platform, such as Google Cloud or Amazon AWS
+- Explore unsupervised learning and deep learning models
 
 ## Contributors
 This project was developed by Robert Franklin (GitHub username: Frankr22), Marisa Duong (GitHub username: MarDuo2022), Brianna O'Connor (GitHub username: borruu) as part of their capstone project for their data analytics course. 
