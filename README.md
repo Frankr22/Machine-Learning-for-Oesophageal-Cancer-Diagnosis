@@ -45,6 +45,7 @@ We utilized the following technologies in our project:
 - Improve Data storage
 - Deploy the web application on a cloud platform, such as Google Cloud or Amazon AWS
 - Explore unsupervised learning and deep learning models
+- Enhance performance metrics and evaluation methods
 
 ## Contributors
 This project was developed by Robert Franklin (GitHub username: Frankr22), Marisa Duong (GitHub username: MarDuo2022), Brianna O'Connor (GitHub username: borruu) as part of their capstone project for their data analytics course. 
