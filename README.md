@@ -1,4 +1,4 @@
-# Machine Learning Oesophageal Cancer Diagnosis
+# Machine Learning for Oesophageal Cancer Diagnosis
 
 <figure>
   <img src="Images/ai-generated-image-dalle.png" alt="DALL-E AI image" width="25%">
