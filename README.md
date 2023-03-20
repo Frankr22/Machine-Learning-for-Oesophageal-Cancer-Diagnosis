@@ -7,7 +7,7 @@
 This project aims to develop a data product prototype, using machine learning algorithms and inputs from clinical and biochemical data, to diagnose oesophageal cancer.
 
 ## Background
-Oesophageal cancer is 8th most common cancer in the world, and is the 6th most common cause of cancer-related deaths (WHO). Ealy diagnosis is crucial for timely treatment and improved survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions.
+Oesophageal cancer is the 8th most common cancer in the world, and is the 6th most common cause of cancer-related deaths (WHO). Ealy diagnosis is crucial for timely treatment and improved survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions.
 
 ## Dataset
 We downloaded datasets in csv files from the supplementary data of a published peer-reviewed journal article that included 2 cohorts: 48-sample American cohort and 252-sample Australian cohort (doi:10.1074/mcp.RA118.000734)
@@ -19,7 +19,7 @@ The algorithms are trained on the dataset and evaluated using various performanc
 
 ## Usage
 - Visit our website for the Cancer Risk Assessment App: [cancer-risk.streamlit.app](https://cancer-risk.streamlit.app/)
-- To run the streamlit app locally, run code `streamlit run app.py` in GitBash, same directory as `app.py`
+- To run the streamlit app locally, run code `streamlit run app.py/` in GitBash, same directory as `app.py/`
 - To explore the backend of the project, you will need to have Python and several Python packages installed, including Scikit-learn, NumPy, and Pandas (see requirements.txt). You can clone the repository and run the scripts provided to preprocess the data, train and evaluate the machine learning algorithms, and make predictions on new data. You can also explore the Jupyter notebooks provided to visualize the data and results.
 
 ## Repository Structure
