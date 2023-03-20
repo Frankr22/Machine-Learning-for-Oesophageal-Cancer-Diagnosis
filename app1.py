@@ -141,13 +141,11 @@ def app():
 
     # If the user clicks the "Generate Risk Assessment" button, scale the data and make a prediction using the model
     if left_column.button("Generate Risk Assessment"):
-     
-        # If blood sample data is available, append it to the user input
-        if blood_sample_data is not None:
-            user_input = np.hstack([user_input, blood_sample_data.to_numpy()])
-            print('input plus blood sample')
         # Scale the user input data
         user_input_scaled = scaler.transform(user_input)
+        # If blood sample data is available, append it to the user input
+        if blood_sample_data is not None:
+            user_input_scaled = np.hstack([user_input_scaled, blood_sample_data.to_numpy()])
         prediction = model.predict(user_input_scaled)
         prediction_proba = model.predict_proba(user_input_scaled)
 
