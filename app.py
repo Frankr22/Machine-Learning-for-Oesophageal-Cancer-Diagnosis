@@ -21,7 +21,7 @@ def app():
         layout="wide",
         initial_sidebar_state="auto",
         menu_items={
-        'About': "Oesophageal cancer is 8th most common cancer in the world, and is the 6th most common cause of cancer-related deaths (WHO). Ealy diagnosis is crucial for timely treatment and improved survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions."
+        'About': "Oesophageal cancer is the 8th most common cancer in the world, and is the 6th most common cause of cancer-related deaths (WHO). Ealy diagnosis is crucial for timely treatment and improved survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions."
         }
     )
 
@@ -49,7 +49,7 @@ def app():
         f"""
         <div style="display: flex; align-items: center;">
             <img src="data:image/png;base64,{image_to_base64(logo_img)}" style="height: 50px; margin-right: 10px;" />
-            <h1 style="margin: 0;">CancerRisk+</h1>
+            <h1 style="margin: 0;">OesoCancerRisk+</h1>
         </div>
         """,
         unsafe_allow_html=True,
