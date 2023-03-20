@@ -84,7 +84,7 @@ def app():
     height = left_column.number_input("Enter your height:", value=170, min_value=100, max_value=250, step=1, format='%i',help='Enter in cms for Metric or inches for Imperial')
     weight = left_column.number_input("Enter your weight:", value=70, min_value=10, max_value=200, step=1, format='%i', help = 'Enter in kgs for Metric or lbs for Imperial')
     unit_system = left_column.radio("Select unit system:", options=['Metric', 'Imperial'], help='')
-    diagnosed = left_column.selectbox("Have you been diagnosed with Barret esophagus?", ["No", "Barrett esophagus - no/low dysplasia"])
+    diagnosed = left_column.selectbox("Have you been diagnosed with Barret oesophagus?", ["No", "Barrett oesophagus - no/low dysplasia"])
 
     # Calculate BMI based on unit system
     if unit_system == 'Metric':
@@ -124,8 +124,10 @@ def app():
     # Add a horizontal line and some space
     left_column.markdown("<hr/>", unsafe_allow_html=True)
     left_column.markdown("<br/>", unsafe_allow_html=True)
-    
+
     # Select the correct model and scaler based on the user's input
+    scaler = None
+    model = None
     if diagnosed == "No" and blood_sample_data is None:
         model = model1
         scaler = model1_X_scaler
