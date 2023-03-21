@@ -31,7 +31,10 @@ Data/ directory contains the dataset
 - `Documents/` contains documentation
 - `ETL_Notebooks/` directory contains jupyter notebooks used in Extract, Transform and Load pre-processing
 - `Images/` directory contains images used in the project such as visualisations.
-- `Models/` directory contains images used in the project such as visualisations.
+- `Models/` directory contains a jupyter notebook used to create and optimise models and record model performance. Also contains csv of model peformance.
+- `Models/Model_Saved/` directory contains joblib files of each model and scaler.
+- `Models/Model_Archived/` directory contains joblib files of earlier models, their scalers and jupyter notebooks used to create those models.
+
 
 ## Technologies Used
 We utilized the following technologies in our project:
