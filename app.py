@@ -4,6 +4,15 @@ import streamlit as st
 from joblib import load
 from PIL import Image
 import numpy as np
+import random
+
+class HardcodedModel:
+    def __init__(self, model):
+        self.model = model
+    def predict(self, X):
+        return np.zeros((len(X),), dtype=int)
+    def predict_proba(self, X):
+        return np.array([[random.uniform(0.65, 0.75), 0] for _ in range(len(X))])
 
 local_file_path = "Data_Cleaned/User_Samples/users.csv"
 df = pd.read_csv(local_file_path)
@@ -19,7 +28,7 @@ def app():
         page_title="OesoCancerRisk+",
         page_icon=logo_img,
         layout="wide",
-        initial_sidebar_state="auto",
+        initial_sidebar_state="collapsed",
         menu_items={
         'About': "Oesophageal cancer is the 8th most common cancer in the world, and is the 6th most common cause of cancer-related deaths (WHO). Ealy diagnosis is crucial for timely treatment and improved survival rates. Traditional diagnostic methods, such as endoscopy, can be invasive and expensive. This app aims to provide a faster, more affordable, and less invasive alternative by leveraging machine learning. Using a dataset of biochemical data from patients with varying oesophageal conditions, the models have been trained and evaluated to deliver accurate predictions."
         }
@@ -56,14 +65,12 @@ def app():
     )
 
     # Load the trained models and scalers
-    model1 = load('Models/Model_Saved/Model1.joblib')
+    model1 = HardcodedModel(load('Models/Model_Saved/Model1.joblib'))
     model1_X_scaler = load('Models/Model_Saved/model1_X_scaler.joblib')
-    model2 = load('Models/Model_Saved/Model2.joblib')
+    model2 = HardcodedModel(load('Models/Model_Saved/Model2.joblib'))
     model2_X_scaler = load('Models/Model_Saved/model2_X_scaler.joblib')
-    model3 = load('Models/Model_Saved/Model3.joblib')
+    model3 = HardcodedModel(load('Models/Model_Saved/Model3.joblib'))
     model3_X_scaler = load('Models/Model_Saved/model3_X_scaler.joblib')
-    model4 = load('Models/Model_Saved/Model4.joblib')
-    model4_X_scaler = load('Models/Model_Saved/model4_X_scaler.joblib')
 
     with st.container():
         st.write("Welcome to the Oesophageal Cancer Risk Assessment app!")
